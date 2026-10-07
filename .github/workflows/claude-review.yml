@@ -20,9 +20,6 @@ jobs:
       pull-requests: write
       issues: write
       id-token: write
-    env:
-      # The API key is not scoped to a workspace, so every request names one.
-      ANTHROPIC_CUSTOM_HEADERS: "anthropic-workspace-id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}"
 
     steps:
       - name: Checkout repository
@@ -35,10 +32,17 @@ jobs:
         timeout-minutes: 10
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # The API key is not scoped to a workspace, so every request names one.
+          anthropic_workspace_id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           trigger_phrase: '@claude'
-          claude_args: '--model claude-haiku-4-5-20251001'
+          claude_args: |
+            --model claude-haiku-4-5-20251001
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
           prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+
             Review this pull request and provide inline feedback on specific lines. Focus on:
 
             1. **Code Quality**
@@ -49,5 +53,6 @@ jobs:
                - Input validation
                - No hardcoded secrets
 
+            Use inline comments for specific issues and `gh pr comment` for a short summary.
             Be concise. Only comment on issues that need attention.
             If the code looks good, say so briefly.
