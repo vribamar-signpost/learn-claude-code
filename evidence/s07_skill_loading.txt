@@ -1,0 +1,166 @@
+# s07_skill_loading
+# run at 2026-10-07 02:22:43 · model claude-haiku-4-5-20251001
+
+$ python s07_skill_loading/code.py 
+s07: Skill Loading - catalog first, full content on demand
+Enter a question, press Enter to send. Type q to quit.
+
+s07 >> What skills are available?
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] Stop: session used 0 tool calls
+Based on the system, here are the available skills:
+
+1. **agent-builder** - Design and build AI agents for any domain
+   - Use when you want to create an agent, build an assistant, or design an AI system
+   - Topics: agent architecture, agentic patterns, autonomous AI, capabilities, subagents, planning, skill mechanisms, Claude Code, Cursor internals
+   - Perfect for: business, research, creative, or operational task automation
+
+2. **code-review** - Perform thorough code reviews with security, performance, and maintainability analysis
+   - Use when you want to review code, check for bugs, or audit a codebase
+
+3. **mcp-builder** - Build MCP (Model Context Protocol) servers that give Claude new capabilities
+   - Use when you want to create an MCP server, add tools to Claude, or integrate external services
+
+4. **pdf** - Process PDF files - extract text, create PDFs, merge documents
+   - Use when you want to read PDF, create PDF, or work with PDF files
+
+You can ask me to use any of these skills by mentioning your task, and I can load the full instructions for whichever skill is most relevant to help you!
+
+s07 >> Load the code-review skill and follow its instructions
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] load_skill(['code-review'])
+[HOOK] Stop: session used 1 tool calls
+I've loaded the code-review skill and I'm now ready to perform comprehensive code reviews following this structured approach. 
+
+Here's what I can do for you:
+
+**Core Review Areas:**
+1. **Security** - Check for injection vulnerabilities, auth issues, data exposure, weak cryptography, and dependency vulnerabilities
+2. **Correctness** - Verify logic, handle edge cases, check for race conditions, resource leaks, and error handling
+3. **Performance** - Identify N+1 queries, memory issues, blocking operations, and inefficient algorithms
+4. **Maintainability** - Review naming, complexity, duplication, dead code, and comments
+5. **Testing** - Ensure adequate coverage of critical paths and edge cases
+
+**I can:**
+- Review code files you provide or that exist in the repository
+- Run security scans (npm audit, pip-audit, etc.)
+- Check for common vulnerability patterns in Python, JavaScript/TypeScript
+- Identify performance bottlenecks
+- Provide specific, actionable feedback with suggested fixes
+
+**Please share:**
+- The code you'd like me to review (file path or paste the code)
+- Context about what the code does
+- Any specific concerns you have
+- Programming language(s) involved
+
+Ready when you are! 🔍
+
+s07 >> Review README.md and load the relevant skill first
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] read_file(['README.md'])
+[HOOK] load_skill(['agent-builder'])
+[HOOK] Stop: session used 3 tool calls
+---
+
+## README Review: Learn Claude Code
+
+### Summary
+
+This is an exemplary educational repository documenting agent harness engineering—not agent building, but the infrastructure that makes agents operational. The README presents a **clear, compelling narrative** that distinguishes the philosophical foundation (agency comes from training, not code orchestration) from the practical work (building harnesses). Highly structured, well-mapped, and instructor-authored at professional depth.
+
+---
+
+### Critical Issues
+
+**None.** This README is architecturally sound and philosophically rigorous.
+
+---
+
+### Improvements
+
+#### 1. **Navigation clarity for newcomers** (Structure)
+- The README excels at explaining *why* agent harnesses matter, but buried guidance on *where to start* for three audience types:
+  - **Total beginners**: Read s01-s05 sequentially (foundations)
+  - **Experienced engineers**: Jump to s10+ (advanced patterns)
+  - **Implementation-first learners**: Run `code.py` in s01 before reading philosophy
+  
+**Suggestion**: Add a "Choose Your Path" callout after the quick start showing these three entry points with expected time investment.
+
+#### 2. **Table clarity: Legacy vs. Current mapping** (Information Architecture)
+The legacy-to-current mapping table is accurate but dense. The mermaid diagram in "Learning Path" is excellent; consider **adding a second diagram** showing the 12→17 lesson bridge explicitly, with visual grouping of:
+  - Direct translations (s01→s01, s02→s02)
+  - Moved lessons (old s03→new s05)
+  - New mechanisms (s03, s04, s09, s12, s14)
+
+This 90-second visual prevents readers from accidentally mixing chapter numbering across tracks.
+
+#### 3. **Quick Start: Environment setup explicitness** (Operations)
+```sh
+cp .env.example .env   # configure ANTHROPIC_API_KEY
+```
+This assumes `.env.example` exists. Add one more line:
+```sh
+# Edit .env and set:
+# ANTHROPIC_API_KEY=sk-ant-...
+```
+Explicit key guidance prevents silent failures.
+
+#### 4. **s15 placement clarity** (Pedagogy)
+The README states: *"s15 reconnects the cumulative runtime; s16 and s17 then study workflow orchestration and goal closure."*
+
+This is correct but the mermaid diagram makes it look like s7 leads directly to s7 (orchestration phase). Clarify the transition:
+
+**Suggestion**: Expand the transition text between Phase2 and Phase3:
+> "s15 brings all mechanisms together in one integrated loop. s16 and s17 extend this loop for specialized use cases: s16 for saved workflows with resumable journals, s17 for goal-controlled continuation."
+
+#### 5. **Deep link accessibility** (UX)
+GitHub rendering shows links like `[s01](./s01_agent_loop/)` but web users need anchor-to-anchor linking. The web app comment is noted but consider:
+- Adding a "URL shortcuts" section for each major phase
+- Recommending `#table-of-contents` style anchors in web deployment
+
+Minor — only affects off-GitHub reading.
+
+---
+
+### Positive Notes
+
+✅ **Philosophical clarity**: The opening 15 paragraphs (agency vs. harness) are exceptional. They correctly position the repository as teaching infrastructure, not intelligence. This mindset correction is the repository's core value.
+
+✅ **Radical simplicity in the core loop**: The 15-line `agent_loop()` function is perfectly pedagogical — it fits in a tweet, runs in 30 seconds, yet teaches the whole pattern.
+
+✅ **Progressive scaffolding**: The 17-chapter design from "one loop + bash" to "goal closure" is a textbook progression. Each chapter's motto is memorable (`s07: "Load knowledge on demand, not upfront"`).
+
+✅ **Mermaid flowchart**: The learning path diagram is clean, color-coded by stage, and easy to scan. Shows six distinct capability layers before orchestration.
+
+✅ **Honesty about scope**: The README explicitly states this is a 0-to-1 harness course, not a general LLM course. Sets realistic expectations.
+
+✅ **Multi-language support**: README.md + README.zh.md + README.ja.md in each chapter is thoughtful and suggests experienced technical documentation maturity.
+
+✅ **Practical products link**: Closing with Kode CLI, SDK, and OpenClaw shows the bridge from teaching to real tools.
+
+✅ **Anti-patterns section in agent-builder skill**: Defines what NOT to do (over-engineering, rigid workflows, premature complexity).
+
+---
+
+### Verdict
+
+**✅ Ready to merge** (if this were a PR)
+
+This README is an exemplar of technical education documentation. It combines rigorous philosophy, clear progression, runnable examples, and honest scope boundaries. The only improvements are micro-optimizations for discoverability and clarity — not foundational issues.
+
+**For students**: Start with s01 and run `code.py`. The philosophy will stick once you see the 15-line loop actually work.
+
+**For educators**: This repository model (narrative + code + progression + multi-language) should be replicated for other agent domains.
+
+---
+
+### Optional Polish (Not Required)
+
+1. Add a "Time to Complete" estimate per chapter (s01: 15min, s08: 45min, s15: 90min)
+2. Include "What you'll build by chapter 5 vs chapter 17" comparison screenshot
+3. Add community links (GitHub Discussions tab, Discord, etc.) if they exist
+
+**These do not block the README's effectiveness.**
+
+s07 >> q

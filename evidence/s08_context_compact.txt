@@ -1,0 +1,178 @@
+# s08_context_compact
+# run at 2026-10-07 02:23:11 · model claude-haiku-4-5-20251001
+
+$ python s08_context_compact/code.py 
+s08: Context Compact - archive, reduce, then summarize
+Enter a question, press Enter to send. Type q to quit.
+
+s08 >> Read the README.md files from s01_agent_loop through s05_todo_write. Compare their top-level headings and summarize the naming pattern.
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+# s01: The Agent Loop — One Loop Is All You Need
+
+[English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
+
+`s01` → [s02](../s02_tool_use/) → s03 → s04 → ... → s16 → s17
+> *"One loop & Bash is 
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+# s02: Tool Use — Add a Tool, Add Just One Line
+
+[English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
+
+s01 → `s02` → [s03](../s03_permission/) → s04 → ... → s16 → s17
+> *"Add a tool, add ju
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+Error: [Errno 2] No such file or directory: '/Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run/s03_json_mode/README.md'
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+Error: [Errno 2] No such file or directory: '/Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run/s04_vision/README.md'
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+# s05: TodoWrite — An Agent Without a Plan Drifts Off Course
+
+[English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
+
+s01 → s02 → s03 → s04 → `s05` → [s06](../s06_subagent/) → s07 → ... → s16
+> bash
+[HOOK] bash(['ls -la /Users/ribamar/dev/jobsity/signpost/claude-training)
+drwxr-xr-x@ 38 ribamar  staff   1216  7 Oct 02:21 .
+drwxr-xr-x   7 ribamar  staff    224  6 Oct 21:42 ..
+drwxr-xr-x@  3 ribamar  staff     96  6 Oct 21:42 .github
+drwxr-xr-x@ 16 ribamar  staff    512 
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+# s03: Permission — Check Permissions Before Execution
+
+[English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
+
+s01 → s02 → `s03` → [s04](../s04_hooks/) → s05 → ... → s16 → s17
+> *"Check perm
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+# s04: Hooks — Hang on the Loop, Don't Write into It
+
+[English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
+
+s01 → s02 → s03 → `s04` → [s05](../s05_todo_write/) → s06 → ... → s16 → s17
+
+> *"
+## Summary: Top-Level Heading Naming Pattern
+
+Based on the README.md files from s01 through s05, here is the **naming pattern for top-level headings**:
+
+| Section | Heading Format |
+|---------|---|
+| **s01: Agent Loop** | `# s01: The Agent Loop — One Loop Is All You Need` |
+| **s02: Tool Use** | `# s02: Tool Use — Add a Tool, Add Just One Line` |
+| **s03: Permission** | `# s03: Permission — Check Permissions Before Execution` |
+| **s04: Hooks** | `# s04: Hooks — Hang on the Loop, Don't Write into It` |
+| **s05: TodoWrite** | `# s05: TodoWrite — An Agent Without a Plan Drifts Off Course` |
+
+### Pattern Summary:
+
+The naming pattern follows a consistent structure:
+
+**`# sXX: FeatureName — Concise Problem Statement or Maxim`**
+
+- **Part 1**: Section number and feature name (`s01: Agent Loop`, `s02: Tool Use`, etc.)
+- **Separator**: Em dash (`—`)
+- **Part 2**: A pithy, memorable phrase that either:
+  - Describes the **key problem** being solved (s03, s05)
+  - Summarizes the **core insight or philosophy** (s01, s02, s04)
+
+The taglines are designed as memorable aphorisms:
+- "One Loop Is All You Need" (s01)
+- "Add a Tool, Add Just One Line" (s02)
+- "Check Permissions Before Execution" (s03)
+- "Hang on the Loop, Don't Write into It" (s04)
+- "An Agent Without a Plan Drifts Off Course" (s05)
+
+s08 >> Analyze the structure of web/src/data/generated/docs.json and explain the main fields in one lesson record.
+> read_file
+[HOOK] read_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+[HOOK] Large output from read_file: 202706 chars
+[
+  {
+    "version": "s01",
+    "locale": "en",
+    "title": "s01: The Agent Loop — One Loop Is All You Need",
+    "content": "# s01: The Agent Loop — One Loop Is All You Need\n\n`s01` → [s02](/en/s02
+> bash
+[HOOK] bash(['head -c 3000 /Users/ribamar/dev/jobsity/signpost/claude-tr)
+[
+  {
+    "version": "s01",
+    "locale": "en",
+    "title": "s01: The Agent Loop — One Loop Is All You Need",
+    "content": "# s01: The Agent Loop — One Loop Is All You Need\n\n`s01` → [s02](/en/s02
+> bash
+[HOOK] bash(['python3 << \'EOF\'\nimport json\n\n# Load the JSON file\nw)
+======================================================================
+OVERALL STRUCTURE
+======================================================================
+Total records: 51
+
+First record structur
+> bash
+[HOOK] bash(['python3 << \'EOF\'\nimport json\n\n# Load the JSON file\nw)
+================================================================================
+SINGLE LESSON RECORD STRUCTURE - DETAILED BREAKDOWN
+===================================================================
+> bash
+Permission denied by deny list: rm -rf /
+> bash
+[HOOK] bash(['python3 << \'EOFPYTHON\'\nimport json\n\nwith open(\'/User)
+╔==============================================================================╗
+║                                                                              ║
+║                        EXAMPLE RECOR
+> bash
+[HOOK] bash(['cat << \'EOF\'\n\n╔═══════════════════════════════════════)
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                   docs.json STRUCTURE AN
+## Summary
+
+I've completed a comprehensive analysis of the `web/src/data/generated/docs.json` file. Here are the key findings:
+
+### **File Structure**
+- **Format**: JSON array of 51 lesson records
+- **Composition**: 17 lessons (s01–s17) × 3 languages (en, zh, ja)
+- **Purpose**: Centralized, generated content library for web UI rendering
+
+### **Four Main Fields in Each Lesson Record**
+
+1. **`version`** (string)
+   - Values: "s01" through "s17"
+   - Primary lesson identifier
+   - Used in URL routing and sequencing
+
+2. **`locale`** (string, ISO 639-1)
+   - Values: "en", "zh", "ja"
+   - Identifies language for internationalization
+   - 17 records per language
+
+3. **`title`** (string, 50–100 chars)
+   - Display heading shown to users
+   - Pattern: "sXX: [Concept] — [Tagline]"
+   - Translated per locale (e.g., "s01: The Agent Loop — One Loop Is All You Need")
+   - Mirrors the H1 heading in content
+
+4. **`content`** (string, ~4000–5500 chars)
+   - GitHub Flavored Markdown (GFM)
+   - Complete lesson body with structure:
+     - Problem description
+     - Solution overview with diagrams (SVG)
+     - Implementation code (Python, Bash)
+     - Tables, links (locale-aware URLs)
+     - Call-to-action for next lesson
+   - Fully translated per locale
+
+### **Design Pattern**
+- **Composite Key**: (version, locale) uniquely identifies each record
+- **Flat structure**: No nested objects—all values are strings
+- **Immutable**: Generated file, never edited manually
+- **Self-contained**: All links and images are absolute URLs
+
+s08 >> q

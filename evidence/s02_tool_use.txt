@@ -1,0 +1,86 @@
+# s02_tool_use
+# run at 2026-10-07 02:20:29 · model claude-haiku-4-5-20251001
+
+$ python s02_tool_use/code.py 
+s02: Tool Use - four tools added to s01
+Enter a question, press Enter to send. Type q to quit.
+
+s02 >> Read the file README.md and tell me what this project is about
+> read_file
+[English](./README.md) | [中文](./README-zh.md) | [日本語](./README-ja.md)
+
+<a href="https://trendshift.io/repositories/19746" target="_blank"><img src="https://trendshift.io/api/badge/repositories/19746" 
+This project is **Learn Claude Code** -- a comprehensive 17-lesson tutorial on building agent harnesses for large language models (LLMs). Here's what it's about:
+
+## Core Philosophy
+
+The project teaches that **agency (the ability to perceive, reason, and act) comes from the model itself through training, not from orchestration code**. The role of engineers is to build the "harness" -- the infrastructure that gives an intelligent model a place to operate effectively.
+
+## Key Concepts
+
+The project breaks down agent harness engineering into 17 progressive lessons, each adding one mechanism:
+
+1. **Core capabilities** (s01-s04): Agent loop, tool use, permissions, hooks
+2. **Complex work handling** (s05-s08): Planning, subagents, context compaction
+3. **Memory & long-running tasks** (s09-s12): Memory systems, task persistence, background jobs, scheduling
+4. **Collaboration & integration** (s13-s15): Multi-agent teams, MCP plugins, integrated harness
+5. **Orchestration & goal closure** (s16-s17): Workflow runtime, goal-controlled loops
+
+## The Central Loop
+
+All agents follow the same pattern:
+```
+User → messages[] → LLM → response → contains tool_use? → execute tools → append results → loop back
+```
+
+The model decides when to use tools; the harness just executes what the model asks.
+
+## What It Teaches
+
+- How to give agents **tools** (file I/O, shell, APIs, etc.)
+- How to provide **knowledge** (docs, references, style guides)
+- How to manage **context** compaction for long conversations
+- How to enable **teams** of agents working together
+- How to **extend** agents via external tools (MCP)
+- How to orchestrate **workflows** and **goals**
+
+The project emphasizes that smart agent products aren't built by stacking prompt chains and if-else rules, but by designing effective environments where trained models can demonstrate their reasoning and acting capabilities.
+
+s02 >> Create a file called test.py that prints "hello", then read it back
+> write_file
+Wrote 15 bytes to test.py
+> read_file
+print("hello")
+Done! I created `test.py` with the content `print("hello")` and read it back. The file now exists and contains exactly what was written.
+
+s02 >> Find all Python files in this directory
+> glob
+hello.py
+test.py
+Found 2 Python files in this directory:
+1. `hello.py`
+2. `test.py`
+
+s02 >> Read both README.md and requirements.txt, then create a summary file
+> read_file
+[English](./README.md) | [中文](./README-zh.md) | [日本語](./README-ja.md)
+
+<a href="https://trendshift.io/repositories/19746" target="_blank"><img src="https://trendshift.io/api/badge/repositories/19746" 
+> read_file
+anthropic>=0.25.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+> write_file
+Wrote 3716 bytes to SUMMARY.md
+Done! I've created `SUMMARY.md` that contains a concise summary of the Learn Claude Code project, including:
+- Project overview and core philosophy
+- What a harness is and its components
+- The core agent loop pattern
+- All 17 lessons organized by stages
+- Key dependencies from requirements.txt
+- Getting started instructions
+- Project structure
+
+The summary distills the essential information from both the README and requirements into a single, organized reference document.
+
+s02 >> q

@@ -1,0 +1,52 @@
+# s04_hooks
+# run at 2026-10-07 02:21:07 · model claude-haiku-4-5-20251001
+
+$ python s04_hooks/code.py 
+s04: Hooks - extension logic on hooks, loop stays clean
+Enter a question, press Enter to send. Type q to quit.
+
+s04 >> Read the file README.md
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] read_file(['README.md'])
+[HOOK] Stop: session used 1 tool calls
+This is a comprehensive tutorial repository on **harness engineering for AI agents**, specifically focused on building the operational infrastructure around Claude (and similar LLMs) so they can act as agents in complex environments.
+
+The key points from the README:
+
+1. **Core Philosophy**: Agency comes from model training, not from code orchestration. The harness is the "vehicle" that lets the trained model (the "driver") operate effectively.
+
+2. **What a Harness Is**: Tools + Knowledge + Observation + Action Interfaces + Permissions that enable an agent to work in a specific domain.
+
+3. **17 Progressive Lessons**: The course builds from basics (s01: Agent Loop) through advanced topics (s17: Goal Loop), teaching:
+   - Agent loops and tool use
+   - Permissions and hooks
+   - Planning and subagents
+   - Context management
+   - Tasks and background operations
+   - Agent teams and coordination
+   - Integration with external tools (MCP)
+   - Workflow orchestration
+   - Goal-directed continuation
+
+4. **The Agent Pattern**: A simple loop where the LLM receives messages, decides whether to call tools, and the harness executes those tool calls and feeds results back.
+
+5. **Quick Start**: Run lessons with commands like `python s01_agent_loop/code.py`
+
+The repository emphasizes building practical, composable harness mechanisms around a core agent loop, with each lesson isolated to teach one specific pattern.
+
+s04 >> Create a file called test.txt
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] write_file(['test.txt', 'This is a test file.'])
+[HOOK] Stop: session used 2 tool calls
+Done! Created `test.txt` with the content "This is a test file."
+
+s04 >> Delete all temporary files in /tmp
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+
+[blocked] 'rm -rf /'
+[HOOK] Stop: session used 3 tool calls
+I don't have permission to delete files from `/tmp` due to security restrictions. The system prevents potentially destructive operations on system directories.
+
+If you need to clean specific files you own, you could run commands with more limited scope, or if these are your own temporary files in a different location, I can help with that instead.
+
+s04 >> q

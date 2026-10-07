@@ -1,0 +1,44 @@
+# s09_memory
+# run at 2026-10-07 02:25:08 · model claude-haiku-4-5-20251001
+
+$ python s09_memory/code.py 
+s09: Memory - selective knowledge across sessions
+Enter a question, press Enter to send. Type q to quit.
+
+s09 >> I prefer using tabs for indentation. Remember that.
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] Stop: session used 0 tool calls
+
+[Memory: stored 1 records]
+Got it! I'll remember that you prefer using tabs for indentation. I'll apply that preference when writing or editing code files.
+
+s09 >> q
+
+$ python s09_memory/code.py 
+s09: Memory - selective knowledge across sessions
+Enter a question, press Enter to send. Type q to quit.
+
+s09 >> What indentation style do I prefer?
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] Stop: session used 0 tool calls
+Based on my memory, you prefer **tabs over spaces** for code indentation in all code files.
+
+s09 >> I prefer concise commit messages in the imperative mood. Remember that.
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] write_file(['/Users/ribamar/dev/jobsity/signpost/claude-training/learn-)
+[HOOK] Stop: session used 1 tool calls
+
+[Memory: stored 1 records]
+Done. I'll use concise, imperative commit messages going forward.
+
+s09 >> What indentation style do I prefer?
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] Stop: session used 1 tool calls
+You prefer **tabs over spaces** for code indentation in all code files.
+
+s09 >> Do not create files in this session.
+[HOOK] UserPromptSubmit: working in /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+[HOOK] Stop: session used 1 tool calls
+Understood. I won't create any files in this session.
+
+s09 >> q

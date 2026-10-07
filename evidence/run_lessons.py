@@ -102,7 +102,7 @@ LESSONS = {
     "s13_agent_teams": {"steps": [
         ("say", "Put the backend refactor on a shared task board. Complete configuration, authentication, and tests in parallel where dependencies allow. Use a worktree for authentication, preserve existing interfaces, and summarize the result."),
         ("say", "Go ahead."),
-        ("settle", 120, 1200),
+        ("settle", 60, 420),
     ]},
     "s14_mcp_plugin": {"steps": [
         ("say", "Connect to the docs server, search for agent hooks, and tell me the current documentation API version."),
@@ -135,6 +135,15 @@ def ensure_worktree():
         ["git", "-C", str(REPO), "worktree", "add", "--detach", str(RUN_DIR), "HEAD"],
         check=True,
     )
+
+
+def reset_worktree():
+    """Start each lesson from a pristine checkout so state from an earlier
+    lesson (.tasks/, .memory/, .worktrees/ ...) cannot leak into the next."""
+    git = ["git", "-C", str(RUN_DIR)]
+    subprocess.run([*git, "reset", "--hard", "-q", "HEAD"], check=True)
+    subprocess.run([*git, "clean", "-ffdxq"], check=True)
+    subprocess.run([*git, "worktree", "prune"], check=True)
 
 
 def child_env():
@@ -239,6 +248,7 @@ def run_once(lesson, args, steps, log, env):
 def run_lesson(lesson, env):
     spec = LESSONS[lesson]
     runs = spec.get("runs", [{"args": [], "steps": spec.get("steps", [])}])
+    reset_worktree()
     log = Transcript()
     started = datetime.datetime.now()
     model = env.get("MODEL_ID", "?")

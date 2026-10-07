@@ -1,0 +1,24 @@
+# s01_agent_loop
+# run at 2026-10-07 02:20:19 · model claude-haiku-4-5-20251001
+
+$ python s01_agent_loop/code.py 
+s01: Agent Loop
+Enter a question, press Enter to send. Type q to quit.
+
+s01 >> Create a file called hello.py that prints "Hello, World!"
+$ cat > hello.py << 'EOF'
+print("Hello, World!")
+EOF
+
+(no output)
+$ python hello.py
+Hello, World!
+Done! Created `hello.py` with the content `print("Hello, World!")` and verified it runs correctly.
+
+s01 >> List all Python files in this directory
+$ ls -la *.py
+-rw-r--r--@ 1 ribamar  staff  23  7 Oct 02:20 hello.py
+There is 1 Python file in this directory:
+- `hello.py`
+
+s01 >> q
