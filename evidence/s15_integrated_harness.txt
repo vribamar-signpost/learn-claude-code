@@ -1,0 +1,320 @@
+# s15_integrated_harness
+# run at 2026-10-07 02:46:35 · model claude-haiku-4-5-20251001
+
+$ python s15_integrated_harness/code.py 
+s15: integrated harness
+Enter a question, press Enter to send. Type q to quit.
+
+s15 >> Inspect this repository and tell me which Python files matter most.
+[HOOK] UserPromptSubmit: /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+> bash
+
+[permission] shell command
+  find . -type f -name "*.py" | head -20
+  Allow? [y/N] y
+[HOOK] bash
+./s13_agent_teams/code.py
+./s17_goal_loop/code.py
+./s05_todo_write/example/hello.py
+./s05_todo_write/code.py
+./s14_mcp_plugin/code.py
+./s01_agent_loop/code.py
+./s15_integrated_harness/code.py
+./s12_cron_scheduler/code.py
+./tests/test_task_system.py
+./tests/test_agents_smoke.py
+./tests/test_s06_subag
+> bash
+
+[permission] shell command
+  ls -la
+  Allow? [y/N] y
+[HOOK] bash
+total 240
+drwxr-xr-x@ 34 ribamar  staff   1088  7 Oct 02:43 .
+drwxr-xr-x   7 ribamar  staff    224  6 Oct 21:42 ..
+-rw-r--r--@  1 ribamar  staff   2945  6 Oct 21:42 .env.example
+-rw-r--r--@  1 ribamar  staff    115  6 Oct 21:42 .git
+drwxr-xr-x@  3 ribamar  staff     96  6 Oct 21:42 .github
+-rw-r--r-
+> bash
+
+[permission] shell command
+  find . -type f -name "*.py" | wc -l && find . -type f -name "*.py" -exec wc -l {} + | sort -rn | head -30
+  Allow? [y/N] y
+[HOOK] bash
+56
+   24717 total
+    3326 ./s15_integrated_harness/code.py
+    2090 ./tests/test_agent_teams_runtime.py
+    1887 ./s13_agent_teams/code.py
+     903 ./s17_goal_loop/code.py
+     888 ./s16_workflow_runtime/code.py
+     790 ./s12_cron_scheduler/code.py
+     789 ./agents/s12_worktree_task_isolation.py
+
+> todo_write
+[HOOK] todo_write
+  [todo] updated 1 item(s)
+Updated 1 todos
+[HOOK] Stop: 4 tool result(s)
+
+[Memory: stored 2 records]
+I'll inspect the repository structure to identify the most important Python files.
+Let me get a better overview of the structure and count the files:
+## Key Python Files (by importance based on size & likely centrality)
+
+**Core Educational/Demonstration Code (Lessons S01-S17):**
+1. **s15_integrated_harness/code.py** (3326 lines) - Integrated harness combining multiple agent concepts
+2. **s13_agent_teams/code.py** (1887 lines) - Multi-agent team orchestration
+3. **s17_goal_loop/code.py** (903 lines) - Goal-oriented agent loop
+4. **s16_workflow_runtime/code.py** (888 lines) - Workflow execution runtime
+5. **s12_cron_scheduler/code.py** (790 lines) - Scheduled task execution
+6. **s09_memory/code.py** (784 lines) - Memory/context management
+7. **s08_context_compact/code.py** (601 lines) - Context compression
+8. **s10_task_system/code.py** (600 lines) - Task management system
+9. **s14_mcp_plugin/code.py** (549 lines) - MCP server integration
+10. **s11_background_tasks/code.py** (542 lines) - Async background tasks
+
+**Agent Implementation Files (agents/ directory):**
+- **agents/s_full.py** (779 lines) - Comprehensive full agent implementation
+- **agents/s11_autonomous_agents.py** (592 lines) - Autonomous agent patterns
+- **agents/s10_team_protocols.py** (492 lines) - Multi-agent protocols
+- **agents/s09_agent_teams.py** (411 lines) - Team coordination
+
+**Test Suite (critical for understanding expected behavior):**
+- **tests/test_agent_teams_runtime.py** (2090 lines) - Agent teams runtime tests
+- **tests/test_goal_loop.py** (521 lines) - Goal loop functionality tests
+- **tests/test_workflow_goal_lessons.py** (498 lines) - Workflow tests
+
+**Skills/Tools:**
+- **skills/agent-builder/** - Agent building utilities (282-271 lines)
+
+This appears to be a **Claude AI agent training/education repository** focused on teaching agent patterns, multi-agent coordination, task systems, and MCP integration through progressive lessons (S01-S17).
+
+s15 >> Search the connected documentation for agent loop guidance.
+[HOOK] UserPromptSubmit: /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+> bash
+
+[permission] shell command
+  find . -type f \( -name "*.md" -o -name "*.txt" \) | head -30
+  Allow? [y/N] y
+[HOOK] bash
+./s13_agent_teams/README.zh.md
+./s13_agent_teams/README.md
+./s13_agent_teams/README.ja.md
+./s17_goal_loop/README.zh.md
+./s17_goal_loop/README.md
+./s17_goal_loop/README.ja.md
+./s05_todo_write/README.zh.md
+./s05_todo_write/README.md
+./s05_todo_write/README.ja.md
+./s14_mcp_plugin/README.zh.md
+./s14_mcp
+> read_file
+[HOOK] read_file
+# s01: The Agent Loop — One Loop Is All You Need
+
+[English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
+
+`s01` → [s02](../s02_tool_use/) → s03 → s04 → ... → s16 → s17
+> *"One loop & Bash is all you need"* — One tool + one loop = one Agent.
+>
+> **Harness Layer**: The Loop — the first bridge
+> read_file
+[HOOK] read_file
+#!/usr/bin/env python3
+"""
+s01_agent_loop.py - The Agent Loop
+
+The entire secret of an AI coding agent in one pattern:
+
+    while True:
+        response = LLM(messages, tools)
+        if response contains no tool_use:
+            break
+        execute tools
+        append results
+
+    +----------+  
+> todo_write
+[HOOK] todo_write
+  [todo] updated 2 item(s)
+Updated 2 todos
+[HOOK] Stop: 8 tool result(s)
+
+[Memory: stored 2 records]
+## Agent Loop Guidance Found
+
+**Core Agent Loop Pattern** (from `s01_agent_loop/README.md` and `code.py`):
+
+### The Minimal Loop (30 lines)
+```python
+def agent_loop(messages):
+    while True:
+        response = client.messages.create(
+            model=MODEL, system=SYSTEM, messages=messages,
+            tools=TOOLS, max_tokens=8000,
+        )
+        messages.append({"role": "assistant", "content": response.content})
+
+        tool_calls = [
+            block for block in response.content if block.type == "tool_use"
+        ]
+        if not tool_calls:
+            return
+
+        results = []
+        for block in tool_calls:
+            output = run_bash(block.input["command"])
+            results.append({
+                "type": "tool_result",
+                "tool_use_id": block.id,
+                "content": output,
+            })
+        messages.append({"role": "user", "content": results})
+```
+
+### Key Principles
+1. **Continue signal**: Model calls a tool (`tool_use` block present) → Execute & loop
+2. **Stop signal**: No `tool_use` block → Exit loop
+3. **Message flow**: User query → LLM → [Tool execution → Results back → LLM]* → Final response
+4. **One loop unchanged**: All 17 lessons (S01-S17) build on this same core loop
+
+### Foundation
+- **Tool execution**: Direct inspection of `response.content` blocks
+- **Result feeding**: Tool results appended as `{"role": "user", "content": results}`
+- **Safety**: Dangerous commands blocked (rm -rf, sudo, shutdown, etc.)
+- **Timeout**: 120s per command execution
+
+The subsequent lessons (S02-S17) layer on: tool use patterns, permissions, hooks, skill loading, context compaction, memory, task systems, background execution, team coordination, MCP integration, and goal-driven loops.
+
+s15 >> Remind me about the meeting in 3 minutes.
+[HOOK] UserPromptSubmit: /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+> schedule_cron
+[HOOK] schedule_cron
+Scheduled cron_893180: '50 02 07 10 *' -> Reminder: You have a meeting in 3 minutes
+[HOOK] Stop: 9 tool result(s)
+Done. Reminder scheduled for 02:50 UTC (3 minutes from now) on Oct 7.
+
+s15 >> Install the dependencies in the background while you read README.md.
+[HOOK] UserPromptSubmit: /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+> bash
+
+[permission] shell command
+  pip install -r requirements.txt
+  Allow? [y/N] y
+[HOOK] bash
+  [background] bg_0001: pip install -r requirements.txt
+> read_file
+[HOOK] read_file
+[English](./README.md) | [中文](./README-zh.md) | [日本語](./README-ja.md)
+
+<a href="https://trendshift.io/repositories/19746" target="_blank"><img src="https://trendshift.io/api/badge/repositories/19746" alt="shareAI-lab%2Flearn-claude-code | Trendshift" style="width: 250px; height: 55px;" width="250" h
+[HOOK] Stop: 11 tool result(s)
+
+[Memory: stored 1 records]
+## Repository Summary
+
+This is **Learn Claude Code** — a comprehensive harness engineering course (17 progressive lessons) teaching how to build operational environments for AI agents. Key insights:
+
+### Core Philosophy
+- **Agency comes from the model**, not code orchestration
+- An agent = trained model + operational harness
+- Your job as a harness engineer: tools, knowledge, observation, action, permissions
+
+### The Core Pattern (All 17 Lessons)
+```python
+while True:
+    response = LLM(messages, tools)
+    messages.append(response)
+    if no tool_use blocks: return
+    execute tools → append results
+    loop
+```
+
+### 17 Progressive Lessons
+1. **s01** — Agent Loop (one tool + one loop)
+2. **s02** — Tool Use (many tools via dispatch map)
+3. **s03** — Permission (sandbox + approval)
+4. **s04** — Hooks (extension points)
+5. **s05** — TodoWrite (plan-then-execute)
+6. **s06** — Subagent (fresh context for subtasks)
+7. **s07** — Skill Loading (on-demand knowledge injection)
+8. **s08** — Context Compact (make room in long conversations)
+9. **s09** — Memory (persist reusable knowledge)
+10. **s10** — Task System (persist goals + dependencies)
+11. **s11** — Background Tasks (async execution)
+12. **s12** — Cron Scheduler (time-triggered tasks)
+13. **s13** — Agent Teams (multi-agent coordination + task-bound worktrees)
+14. **s14** — MCP Plugin (external capability routing)
+15. **s15** — Integrated Harness (all mechanisms, one loop)
+16. **s16** — Workflow Runtime (scripted orchestration)
+17. **s17** — Goal Loop (evaluator decides when to stop)
+
+### Dependencies installing in background...
+
+s15 >> > bash
+> bash
+> read_file
+[HOOK] read_file
+anthropic>=0.25.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+> todo_write
+[HOOK] todo_write
+  [todo] updated 4 item(s)
+Updated 4 todos
+[HOOK] Stop: 15 tool result(s)
+
+[Memory: stored 3 records]
+Let me retry synchronously:
+s15 >> y
+Done. Dependencies installation failed — `pip` not in PATH. Requirements identified: `anthropic>=0.25.0`, `python-dotenv>=1.0.0`, `pyyaml>=6.0`.
+s15 >> y
+  [cron auto] Reminder: You have a meeting in 3 minutes
+s15 >> y
+  [cron inject] Reminder: You have a meeting in 3 minutes
+> todo_write
+[HOOK] todo_write
+  [todo] updated 5 item(s)
+Updated 5 todos
+[HOOK] Stop: 16 tool result(s)
+**Meeting reminder: You have a meeting in 3 minutes.**
+s15 >> y
+Summarize what happened in this session, including any reminders or background results.
+[HOOK] UserPromptSubmit: /Users/ribamar/dev/jobsity/signpost/claude-training/learn-claude-code-run
+> todo_write
+[HOOK] todo_write
+  [todo] updated 6 item(s)
+Updated 6 todos
+[HOOK] Stop: 17 tool result(s)
+## Session Summary
+
+**Repository**: Learn Claude Code — a 17-lesson harness engineering curriculum for building AI agent operational environments.
+
+### What You Did
+1. **Inspected Python files** — Found ~30+ Python files; top priorities by size/centrality:
+   - `s15_integrated_harness/code.py` (3326 lines) — cumulative harness implementation
+   - `s13_agent_teams/code.py` (1887 lines) — multi-agent coordination
+   - Test suite with 2090 lines of agent teams runtime tests
+   - Progressive lessons s01-s17 each adding one harness mechanism
+
+2. **Located agent loop guidance** — Found core pattern in `s01_agent_loop/README.md` and `code.py`:
+   - Minimal 30-line loop: LLM call → check for `tool_use` blocks → execute tools → feed results back → repeat
+   - Safety: blocks dangerous commands, 120s timeout per execution
+   - All 17 lessons build on this unchanged core
+
+3. **Read README.md** — Learned the complete curriculum:
+   - **Philosophy**: Agency comes from model training, not code; your job is building the harness (tools, knowledge, permissions, observation, action)
+   - **17 Progressive Lessons**: Agent Loop → Tool Use → Permission → Hooks → TodoWrite → Subagent → Skill Loading → Context Compact → Memory → Task System → Background Tasks → Cron Scheduler → Agent Teams → MCP Plugin → Integrated Harness → Workflow Runtime → Goal Loop
+   - **Endpoint**: s17 uses goal evaluation to decide when agent can stop
+
+### Background Results
+- **Scheduled reminder** (02:50 UTC, Oct 7): "You have a meeting in 3 minutes" — triggered successfully
+- **pip install attempt**: Failed (`pip` not in PATH). Requirements identified:
+  - `anthropic>=0.25.0`
+  - `python-dotenv>=1.0.0`
+  - `pyyaml>=6.0`
+
+s15 >> q
