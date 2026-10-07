@@ -1,0 +1,53 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+  issue_comment:
+    types: [created] # On-demand via @claude comments
+
+jobs:
+  claude-review:
+    # Run on PR events, or on PR comments that mention @claude
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    env:
+      # The API key is not scoped to a workspace, so every request names one.
+      ANTHROPIC_CUSTOM_HEADERS: "anthropic-workspace-id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        timeout-minutes: 10
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          trigger_phrase: '@claude'
+          claude_args: '--model claude-haiku-4-5-20251001'
+          prompt: |
+            Review this pull request and provide inline feedback on specific lines. Focus on:
+
+            1. **Code Quality**
+               - Potential bugs or edge cases
+               - Error handling completeness
+
+            2. **Security**
+               - Input validation
+               - No hardcoded secrets
+
+            Be concise. Only comment on issues that need attention.
+            If the code looks good, say so briefly.
