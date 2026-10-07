@@ -20,6 +20,9 @@ jobs:
       pull-requests: write
       issues: write
       id-token: write
+    env:
+      # The API key is not scoped to a workspace, so every request names one.
+      ANTHROPIC_CUSTOM_HEADERS: "anthropic-workspace-id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}"
 
     steps:
       - name: Checkout repository
@@ -32,8 +35,6 @@ jobs:
         timeout-minutes: 10
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # The API key is not scoped to a workspace, so every request names one.
-          anthropic_workspace_id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           trigger_phrase: '@claude'
           claude_args: |
