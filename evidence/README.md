@@ -24,15 +24,15 @@ All runs used `claude-haiku-4-5-20251001`.
 | s01 | [s01_agent_loop.txt](s01_agent_loop.txt) | Single bash tool driving the loop; creates and runs `hello.py` |
 | s02 | [s02_tool_use.txt](s02_tool_use.txt) | Dispatch map with read/write/edit/glob tools, multiple calls per turn |
 | s03 | [s03_permission.txt](s03_permission.txt) | Permission gates: allowed, approved `rm`, denied write to `/etc` |
-| s04 | [s04_hooks.txt](s04_hooks.txt) | `[HOOK]` logs around every tool call; `/tmp` delete denied by the permission hook |
+| s04 | [s04_hooks.txt](s04_hooks.txt) | `[HOOK]` logs around every tool call; `/tmp` delete stopped as `[blocked] 'rm -rf /'` |
 | s05 | [s05_todo_write.txt](s05_todo_write.txt) | `todo_write` plan first, statuses moving to completed |
 | s06 | [s06_subagent.txt](s06_subagent.txt) | Subagent with fresh context returning only its final text |
 | s07 | [s07_skill_loading.txt](s07_skill_loading.txt) | Skill catalog in prompt, full `SKILL.md` loaded on demand |
-| s08 | [s08_context_compact.txt](s08_context_compact.txt) | Older tool results replaced by saved-file references; large result persisted |
+| s08 | [s08_context_compact.txt](s08_context_compact.txt) | Several file reads, then a 202,706-char result flagged as large output (compaction happens inside the context and is not printed) |
 | s09 | [s09_memory.txt](s09_memory.txt) | Preference stored, recalled after restart; session-only rule not persisted |
 | s10 | [s10_task_system.txt](s10_task_system.txt) | File-backed task graph with dependencies unblocking on completion |
-| s11 | [s11_background_tasks.txt](s11_background_tasks.txt) | Background jobs with `bg_id` and later `<task_notification>` |
-| s12 | [s12_cron_scheduler.txt](s12_cron_scheduler.txt) | Cron job scheduled, fired (`[Scheduled]`), listed and cancelled |
+| s11 | [s11_background_tasks.txt](s11_background_tasks.txt) | Background jobs `bg_0001` / `bg_0002` started, collected and summarized on a later turn |
+| s12 | [s12_cron_scheduler.txt](s12_cron_scheduler.txt) | Durable cron job scheduled, listed, fired (`[cron] due` / `delivered`) and cancelled |
 | s13 | [s13_agent_teams.txt](s13_agent_teams.txt) | Lead + 3 teammates, task board, task-bound worktree, mailbox results and idle notifications (API credits ran out in the final lines) |
 | s14 | [s14_mcp_plugin.txt](s14_mcp_plugin.txt) | `connect_mcp` then `mcp__docs__search` / `mcp__docs__get_version` |
 | s15 | [s15_integrated_harness.txt](s15_integrated_harness.txt) | Hooks, permissions, cron reminder (`[cron auto]` / `[cron inject]`), background job, memory and todos in one loop |
