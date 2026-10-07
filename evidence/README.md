@@ -33,8 +33,8 @@ All runs used `claude-haiku-4-5-20251001`.
 | s10 | [s10_task_system.txt](s10_task_system.txt) | File-backed task graph with dependencies unblocking on completion |
 | s11 | [s11_background_tasks.txt](s11_background_tasks.txt) | Background jobs `bg_0001` / `bg_0002` started, collected and summarized on a later turn |
 | s12 | [s12_cron_scheduler.txt](s12_cron_scheduler.txt) | Durable cron job scheduled, listed, fired (`[cron] due` / `delivered`) and cancelled |
-| s13 | [s13_agent_teams.txt](s13_agent_teams.txt) | Lead + 3 teammates, task board, task-bound worktree, mailbox results and idle notifications (API credits ran out in the final lines) |
+| s13 | [s13_agent_teams.txt](s13_agent_teams.txt) | Lead + teammate on a shared task board, task-bound worktree, all four tasks claimed and completed, mailbox `result` and `idle_notification` (stopped at the 7-minute cap while a teammate worked on a follow-up task) |
 | s14 | [s14_mcp_plugin.txt](s14_mcp_plugin.txt) | `connect_mcp` then `mcp__docs__search` / `mcp__docs__get_version` |
-| s15 | [s15_integrated_harness.txt](s15_integrated_harness.txt) | Hooks, permissions, cron reminder (`[cron auto]` / `[cron inject]`), background job, memory and todos in one loop |
+| s15 | [s15_integrated_harness.txt](s15_integrated_harness.txt) | Hooks, permissions, `connect_mcp` then MCP search, cron reminder (`[cron auto]` / `[cron inject]`), background job, memory and todos in one loop |
 | s16 | [s16_workflow_runtime.txt](s16_workflow_runtime.txt) | Deterministic demo, resume from journal (`agents=0 tokens=0`), live review-changes workflow |
 | s17 | [s17_goal_loop.txt](s17_goal_loop.txt) | `/goal` with evaluator confirming `[goal] achieved` |

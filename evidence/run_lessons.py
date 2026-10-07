@@ -109,7 +109,7 @@ LESSONS = {
     ]},
     "s15_integrated_harness": {"steps": [
         ("say", "Inspect this repository and tell me which Python files matter most."),
-        ("say", "Search the connected documentation for agent loop guidance."),
+        ("say", "Connect to the docs MCP server and search the documentation for agent loop guidance."),
         ("say", "Remind me about the meeting in 3 minutes."),
         ("say", "Install the dependencies in the background while you read README.md."),
         ("wait", 200),
